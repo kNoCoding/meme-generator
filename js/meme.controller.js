@@ -24,6 +24,12 @@ function onInit() {
     //listen to CHANGE events on the meme text input
     const memeTextChanger = document.getElementById('meme-text')
     memeTextChanger.addEventListener('input', onChangeTxt, false)
+
+    //listen to CLICK events on the download button
+    const downloadBtn = document.querySelector('.downloadBtn');
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', downloadCanvas, false);
+    }
 }
 
 function renderMeme() {
@@ -71,4 +77,20 @@ function handleImageUpload(event) {
         };
     };
     reader.readAsDataURL(file);
+}
+
+function downloadCanvas() {
+    // Get the canvas data as an image (PNG format by default)
+    const imageData = gElCanvas.toDataURL("image/png");
+
+    // Create a temporary link element
+    const downloadLink = document.createElement('a');
+    downloadLink.href = imageData;
+    // Name the download file
+    downloadLink.download = `your-funny-meme.png`;
+
+    // Append the link to the document, trigger click, then remove the link
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
 }
