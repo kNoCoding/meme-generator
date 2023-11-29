@@ -27,14 +27,19 @@
 
     <main>
         <div class="gallery">
-            <img src="img/meme-imgs/meme-imgs (square)/1.jpg">
-            <img src="img/meme-imgs/meme-imgs (square)/2.jpg">
-            <img src="img/meme-imgs/meme-imgs (square)/3.jpg">
-            <img src="img/meme-imgs/meme-imgs (square)/4.jpg">
-            <img src="img/meme-imgs/meme-imgs (square)/5.jpg">
-            <img src="img/meme-imgs/meme-imgs (square)/6.jpg">
-            <img src="img/meme-imgs/meme-imgs (square)/7.jpg">
-            <img src="img/meme-imgs/meme-imgs (square)/8.jpg">
+            <div>
+                <h2>Upload image</h2>
+                <input type="file" id="imageUpload" accept="image/*">
+            </div>
+
+            <img src="img/meme-imgs/meme-img-square/1.jpg">
+            <img src="img/meme-imgs/meme-img-square/2.jpg">
+            <img src="img/meme-imgs/meme-img-square/3.jpg">
+            <img src="img/meme-imgs/meme-img-square/4.jpg">
+            <img src="img/meme-imgs/meme-img-square/5.jpg">
+            <img src="img/meme-imgs/meme-img-square/6.jpg">
+            <img src="img/meme-imgs/meme-img-square/7.jpg">
+            <img src="img/meme-imgs/meme-img-square/8.jpg">
         </div>
 
         <div class="editor">
@@ -44,8 +49,8 @@
 
             <div class="options-container">
                 <div class="canvas-manipulation-btns">
-                    <h2>Upload image</h2>
-                    <input type="file" id="imageUpload" accept="image/*">
+                    <!-- <h2>Upload image</h2>
+                    <input type="file" id="imageUpload" accept="image/*"> -->
 
 
                     <h2>Edit text lines</h2>
@@ -90,6 +95,7 @@
         <p>This is fun yeah..</p>
     </footer>
 
+    <script src="js/services/meme.service.js"></script>
     <script src="js/meme.controller.js"></script>
 </body>
 
