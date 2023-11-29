@@ -3,7 +3,6 @@ TODO - DUE 29112023 2000
 ========================================================================
     Phase1 – basic flow (~4-8 hours)
 
-    4) Add a memeService with a gMeme variable and a function getMeme(), the function renderMeme() can now render that meme
     5) Add a text input and when it changed by the user –
         a) update the gMeme using the memeService function setLineTxt()
         b) then renderMeme()
@@ -17,7 +16,7 @@ TODO - DUE 29112023 2000
 IN PROGRESS
 ========================================================================
 
-    3) Create a memeController, code a function renderMeme() that renders an image on the canvas and a line of text on top
+    4) Add a memeService with a gMeme variable and a function getMeme(), the function renderMeme() can now render that meme
 
 ========================================================================
 DONE
@@ -26,3 +25,4 @@ DONE
     1) Build an initial home page (index.html, main.js, main.css)
         a) Create an empty section for the gallery and for the editor
     2) Commit and Push to Github, setup Github pages
+    3) Create a memeController, code a function renderMeme() that renders an image on the canvas and a line of text on top
