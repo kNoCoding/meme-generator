@@ -8,7 +8,7 @@
     <title>Meme Generator</title>
 </head>
 
-<body onload="onInit()">
+<body onload="onInit(), onInitGallery()">
     <header class="main-header">
         <div class="logo">
             <h1>TearsGenerator</h1>
@@ -32,14 +32,7 @@
                 <input type="file" id="imageUpload" accept="image/*">
             </div>
 
-            <img src="img/meme-imgs/meme-img-square/1.jpg">
-            <img src="img/meme-imgs/meme-img-square/2.jpg">
-            <img src="img/meme-imgs/meme-img-square/3.jpg">
-            <img src="img/meme-imgs/meme-img-square/4.jpg">
-            <img src="img/meme-imgs/meme-img-square/5.jpg">
-            <img src="img/meme-imgs/meme-img-square/6.jpg">
-            <img src="img/meme-imgs/meme-img-square/7.jpg">
-            <img src="img/meme-imgs/meme-img-square/8.jpg">
+            <div class="rendered-imgs"></div>
         </div>
 
         <div class="editor">
@@ -49,12 +42,6 @@
 
             <div class="options-container">
                 <div class="canvas-manipulation-btns">
-                    <!-- moved it to be above the images,
-                         consider deleting this later if not needed -->
-                    <!-- <h2>Upload image</h2>
-                    <input type="file" id="imageUpload" accept="image/*"> -->
-
-
                     <h2>Edit text lines</h2>
                     <button class="line-select">Select line</button>
                     <button class="line-up">Line-up</button>
@@ -77,12 +64,12 @@
                     <input type="color" name="stroke" id="stroke-picker">
                     <input type="text" name="meme-text" id="meme-text" placeholder="Meme text here" value="">
 
-                    <div class="sticker-container">
+                    <!-- <div class="sticker-container">
                         <p>👶</p>
                         <p>🤨</p>
                         <p>🤯</p>
                         <p>😐</p>
-                    </div>
+                    </div> -->
 
                     <div class="post-edit">
                         <button class="save">Save</button>
@@ -97,7 +84,10 @@
         <p>This is fun yeah..</p>
     </footer>
 
+    <script src="js/services/storage.service.js"></script>
+    <script src="js/services/gallery.service.js"></script>
     <script src="js/services/meme.service.js"></script>
+    <script src="js/gallery.controller.js"></script>
     <script src="js/meme.controller.js"></script>
 </body>
 

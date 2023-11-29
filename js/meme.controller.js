@@ -2,15 +2,14 @@
 
 let gElCanvas
 let gCtx
-let img
+let gImg
 let gCurrColor = '#000000'; // Default black color
 let gCurrStroke = '#FFFFFF'; // Default white stroke
 
 function onInit() {
-    console.log('Welcome to summoners rift!')
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
-    img = new Image()
+    gImg = new Image()
 
     //listen to CHANGE events on the upload image
     const imageUploader = document.getElementById('imageUpload')
@@ -19,9 +18,7 @@ function onInit() {
     //listen to CLICK events on the gallery images
     const gallery = document.querySelector('.gallery')
     gallery.addEventListener('click', function (event) {
-        if (event.target.tagName === 'IMG') {
-            onMemeClick(event)
-        }
+        if (event.target.tagName === 'IMG') onMemeClick(event)
     })
 
     //listen to CHANGE events on the meme text input
@@ -34,13 +31,13 @@ function renderMeme() {
     elTxtChanger.value = getLineTxt()
 
     gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
-    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+    gCtx.drawImage(gImg, 0, 0, gElCanvas.width, gElCanvas.height)
     drawText(getLineTxt(), gElCanvas.width / 2, gElCanvas.height / 2)
 }
 
 function onMemeClick(event) {
-    img.src = event.target.src;
-    img.onload = function () {
+    gImg.src = event.target.src;
+    gImg.onload = function () {
         renderMeme();
     };
 }
@@ -68,8 +65,8 @@ function handleImageUpload(event) {
 
     const reader = new FileReader();
     reader.onload = function (e) {
-        img.src = e.target.result;
-        img.onload = function () {
+        gImg.src = e.target.result;
+        gImg.onload = function () {
             renderMeme();
         };
     };

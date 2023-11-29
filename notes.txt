@@ -1,23 +1,32 @@
-========================================================================
-TODO - DUE 29112023 2000
-========================================================================
-    Phase1 – basic flow (~4-8 hours)
+=============================================================
+TODO - DUE 30112023 1400
+=============================================================
 
 
-    7) onImageClick – call the memeService's setImg() and then renderMeme()
-    8) Commit and Push
-    9) Try your app from mobile
+    Phase3 – add line operations:
+        11) Add a color picker button
+        12) Add the button “increase/decrease” font
 
-
-========================================================================
+    Phase4 – multiple lines:
+        13) Add (to gMeme) a second line
+        14) Render the lines on the canvas
+        15) Add the button “add line”
+        16) Add the button “switch line”, that switches the selected line
+        17) Draw a frame around the selected line (so the user can see which line is
+        selected)
+        18) Use a single set of control-boxes to handle all the different lines
+=============================================================
 IN PROGRESS
-========================================================================
+=============================================================
 
-    6) Create a galleryController, with a renderGallery presenting two images.
+    Phase2 – download meme:
+        10) Add a download link
 
-========================================================================
+=============================================================
 DONE
-========================================================================
+=============================================================
+
+Phase1 – basic flow (~4-8 hours)
 
     1) Build an initial home page (index.html, main.js, main.css)
         a) Create an empty section for the gallery and for the editor
@@ -27,3 +36,7 @@ DONE
     5) Add a text input and when it changed by the user –
         a) update the gMeme using the memeService function setLineTxt()
         b) then renderMeme()
+    6) Create a galleryController, with a renderGallery presenting two images.
+    7) onImageClick – call the memeService's setImg() and then renderMeme()
+    8) Commit and Push
+    9) Try your app from mobile
