@@ -1,0 +1,28 @@
+========================================================================
+TODO - DUE 29112023 2000
+========================================================================
+    Phase1 – basic flow (~4-8 hours)
+
+    4) Add a memeService with a gMeme variable and a function getMeme(), the function renderMeme() can now render that meme
+    5) Add a text input and when it changed by the user –
+        a) update the gMeme using the memeService function setLineTxt()
+        b) then renderMeme()
+    6) Create a galleryController, with a renderGallery presenting two images.
+    7) onImgSelect – call the memeService's setImg() and then renderMeme()
+    8) Commit and Push
+    9) Try your app from mobile
+
+
+========================================================================
+IN PROGRESS
+========================================================================
+
+    3) Create a memeController, code a function renderMeme() that renders an image on the canvas and a line of text on top
+
+========================================================================
+DONE
+========================================================================
+
+    1) Build an initial home page (index.html, main.js, main.css)
+        a) Create an empty section for the gallery and for the editor
+    2) Commit and Push to Github, setup Github pages
