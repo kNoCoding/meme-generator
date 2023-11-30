@@ -19,6 +19,12 @@ function getMeme(imgUrl) {
     return gGallery.find(img => imgUrl === img.url)
 }
 
+function getLineTxt() {
+    const currMemeLine = gMemes.lines[gMemes.selectedLineIdx]; // Access the line object using the selectedLineIdx
+    const lineTxt = currMemeLine.txt; // Now you can access the txt property
+    return lineTxt
+}
+
 function setLineTxt(newTxt) {
     const currMemeLine = gMemes.lines[gMemes.selectedLineIdx]
     if (currMemeLine === newTxt) return
@@ -26,16 +32,15 @@ function setLineTxt(newTxt) {
     return newTxt
 }
 
-function getLineTxt() {
-    const currMemeLine = gMemes.lines[gMemes.selectedLineIdx]; // Access the line object using the selectedLineIdx
-    const lineTxt = currMemeLine.txt; // Now you can access the txt property
-    return lineTxt
+function getTxtSize() {
+    const currMemeTxtSize = gMemes.lines[gMemes.selectedLineIdx].size
+    return currMemeTxtSize
 }
 
-function setTxtColor(newColor) {
-    const currMemeTxtColor = gMemes.lines[gMemes.selectedLineIdx].color
-    if (currMemeTxtColor === newColor) return
-    gMemes.lines[gMemes.selectedLineIdx].color = newColor
+function setTxtSize(newSize) {
+    const currMemeTxtSize = getTxtSize()
+    if (currMemeTxtSize === newSize) return
+    gMemes.lines[gMemes.selectedLineIdx].size = newSize
 }
 
 function getTxtColor() {
@@ -43,15 +48,21 @@ function getTxtColor() {
     return currMemeTxtColor
 }
 
-function setTxtStroke(newStroke) {
-    const currMemeTxtStroke = gMemes.lines[gMemes.selectedLineIdx].stroke
-    if (currMemeTxtStroke === newStroke) return
-    gMemes.lines[gMemes.selectedLineIdx].stroke = newStroke
+function setTxtColor(newColor) {
+    const currMemeTxtColor = getTxtColor()
+    if (currMemeTxtColor === newColor) return
+    gMemes.lines[gMemes.selectedLineIdx].color = newColor
 }
 
 function getTxtStroke() {
     const currMemeTxtStroke = gMemes.lines[gMemes.selectedLineIdx].stroke
     return currMemeTxtStroke
+}
+
+function setTxtStroke(newStroke) {
+    const currMemeTxtStroke = getTxtStroke()
+    if (currMemeTxtStroke === newStroke) return
+    gMemes.lines[gMemes.selectedLineIdx].stroke = newStroke
 }
 
 // util function

@@ -3,7 +3,7 @@ TODO - DUE 30112023 1400
 =============================================================
 
     Phase4 – multiple lines:
-        13) Add (to gMeme) a second line
+
         14) Render the lines on the canvas
         15) Add the button “add line”
         16) Add the button “switch line”, that switches the selected line
@@ -15,7 +15,7 @@ TODO - DUE 30112023 1400
 IN PROGRESS
 =============================================================
 
-        12) Add the button “increase/decrease” font
+        13) Add (to gMeme) a second line
 
 =============================================================
 DONE
@@ -46,3 +46,4 @@ DONE
 
         11) Add a color picker button
         11.5) Add a stroke picker
+        12) Add the button “increase/decrease” font
