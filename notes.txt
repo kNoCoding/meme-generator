@@ -15,7 +15,7 @@ TODO - DUE 30112023 1400
 IN PROGRESS
 =============================================================
 
-        13) Add (to gMeme) a second line
+        13) Add (to gMeme) a second line in the canvas
 
 =============================================================
 DONE
