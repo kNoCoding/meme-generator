@@ -5,9 +5,10 @@ let gMemes = {
     selectedLineIdx: 0,
     lines: [
         {
-            txt: 'I sometimes eat Falafel',
+            txt: 'No tears at all',
             size: 20,
-            color: 'red'
+            color: 'red',
+            stroke: 'black',
         }
     ]
 }
@@ -29,4 +30,16 @@ function getLineTxt() {
     const currMemeLine = gMemes.lines[gMemes.selectedLineIdx]; // Access the line object using the selectedLineIdx
     const lineTxt = currMemeLine.txt; // Now you can access the txt property
     return lineTxt
+}
+
+function setTxtColor(newColor) {
+    const currMemeTxtColor = gMemes.lines[gMemes.selectedLineIdx].color
+    if (currMemeTxtColor === newColor) return
+    gMemes.lines[gMemes.selectedLineIdx].color = newColor
+}
+
+function setTxtStroke(newStroke) {
+    const currMemeTxtStroke = gMemes.lines[gMemes.selectedLineIdx].stroke
+    if (currMemeTxtStroke === newStroke) return
+    gMemes.lines[gMemes.selectedLineIdx].stroke = newStroke
 }

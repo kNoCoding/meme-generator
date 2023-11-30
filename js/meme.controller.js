@@ -21,7 +21,7 @@ function onInit() {
         if (event.target.tagName === 'IMG') onMemeClick(event)
     })
 
-    //listen to CHANGE events on the meme text input
+    //listen to INPUT events on the meme text input
     const memeTextChanger = document.getElementById('meme-text')
     memeTextChanger.addEventListener('input', onChangeTxt, false)
 
@@ -93,4 +93,16 @@ function downloadCanvas() {
     document.body.appendChild(downloadLink);
     downloadLink.click();
     document.body.removeChild(downloadLink);
+}
+
+function onSetColor(color) {
+    gCurrColor = color
+    setTxtColor(gCurrColor)
+    renderMeme()
+}
+
+function onSetStroke(stroke) {
+    gCurrStroke = stroke
+    setTxtStroke(gCurrStroke)
+    renderMeme()
 }

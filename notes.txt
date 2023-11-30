@@ -15,8 +15,6 @@ TODO - DUE 30112023 1400
 IN PROGRESS
 =============================================================
 
-    Phase3 – add line operations:
-        11) Add a color picker button
         12) Add the button “increase/decrease” font
 
 =============================================================
@@ -39,9 +37,12 @@ DONE
         9) Try your app from mobile
 
 
-
     Phase2 – download meme:
 
         10) Add a download link
 
 
+    Phase3 – add line operations:
+
+        11) Add a color picker button
+        11.5) Add a stroke picker
