@@ -33,7 +33,7 @@ function onInit() {
 }
 
 function renderMeme() {
-    let elTxtChanger = document.getElementById('meme-text')
+    const elTxtChanger = document.getElementById('meme-text')
     elTxtChanger.value = getLineTxt()
 
     gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
@@ -44,6 +44,14 @@ function renderMeme() {
 function onMemeClick(event) {
     gImg.src = event.target.src;
     gImg.onload = function () {
+
+        // Update the current color based on the selected line's color
+        gCurrColor = colorNameToHex(getTxtColor()); // Ensure this is in hex format
+
+        // Update the color picker's value to reflect the current color
+        const elTxtColorChanger = document.querySelector('.color-picker');
+        elTxtColorChanger.value = gCurrColor;
+
         renderMeme();
     };
 }

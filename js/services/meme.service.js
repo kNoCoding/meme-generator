@@ -7,8 +7,8 @@ let gMemes = {
         {
             txt: 'No tears at all',
             size: 20,
-            color: 'red',
-            stroke: 'black',
+            color: 'green',
+            stroke: 'blue',
         }
     ]
 }
@@ -38,8 +38,31 @@ function setTxtColor(newColor) {
     gMemes.lines[gMemes.selectedLineIdx].color = newColor
 }
 
+function getTxtColor() {
+    const currMemeTxtColor = gMemes.lines[gMemes.selectedLineIdx].color
+    return currMemeTxtColor
+}
+
 function setTxtStroke(newStroke) {
     const currMemeTxtStroke = gMemes.lines[gMemes.selectedLineIdx].stroke
     if (currMemeTxtStroke === newStroke) return
     gMemes.lines[gMemes.selectedLineIdx].stroke = newStroke
+}
+
+function getTxtStroke() {
+    const currMemeTxtStroke = gMemes.lines[gMemes.selectedLineIdx].stroke
+    return currMemeTxtStroke
+}
+
+// util function
+
+function colorNameToHex(color) {
+    var colors = {
+        "red": "#ff0000",
+        "blue": "#0000ff",
+        "green": "#008000",
+        // Add more mappings as needed
+    };
+
+    return colors[color.toLowerCase()] || color;
 }
