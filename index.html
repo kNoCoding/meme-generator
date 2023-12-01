@@ -22,7 +22,7 @@
         </nav>
     </header>
     <div class="search-box">
-        <input type="text" name="search-box" id="search-box" placeholder="Search">
+        <input type="text" name="search-box" id="search-box" placeholder="Search" disabled>
     </div>
 
     <main>
@@ -43,22 +43,22 @@
             <div class="options-container">
                 <div class="canvas-manipulation-btns">
                     <h2>Edit text lines</h2>
-                    <button class="line-select">Select line</button>
-                    <button class="line-up">Line-up</button>
-                    <button class="line-down">Line-down</button>
+                    <button class="line-select" disabled>Select line</button>
+                    <button class="line-up" disabled>Line-up</button>
+                    <button class="line-down" disabled>Line-down</button>
                     <button class="line-new">New line</button>
-                    <button class="line-delete">Delete line</button>
+                    <button class="line-delete" disabled>Delete line</button>
                 </div>
 
                 <div class="text-editor">
-                    <select name="select-font" id="select-font">Font</select>
+                    <select name="select-font" id="select-font" disabled>Font</select>
 
                     <button class="incr-fs">A+</button>
                     <button class="decr-fs">A-</button>
 
-                    <button class="align-l">←</button>
-                    <button class="align-c">←→</button>
-                    <button class="align-r">→</button>
+                    <button class="align-l" disabled>←</button>
+                    <button class="align-c" disabled>←→</button>
+                    <button class="align-r" disabled>→</button>
 
                     <input type="color" name="color" class="color-picker" onchange="onSetColor(this.value)">
                     <input type="color" name="stroke" class="stroke-picker" onchange="onSetStroke(this.value)">
@@ -73,9 +73,9 @@
                     </div> -->
 
                     <div class="post-edit">
-                        <button class="save">Save</button>
+                        <button class="save" disabled>Save</button>
                         <button class="downloadBtn">Download</button>
-                        <button class="share">Share</button>
+                        <button class="share" disabled>Share</button>
                     </div>
                 </div>
             </div>
