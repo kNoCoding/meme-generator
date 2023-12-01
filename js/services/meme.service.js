@@ -20,6 +20,10 @@ function addLine() {
     lines.push(_createNewLine())
 }
 
+function switchLine() {
+    console.log('and this is the meme.service speaking');
+}
+
 function getLineTxt() {
     const currMemeLine = gMemes.lines[gMemes.selectedLineIdx]; // Access the line object using the selectedLineIdx
     const lineTxt = currMemeLine.txt; // Now you can access the txt property

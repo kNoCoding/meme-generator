@@ -16,8 +16,6 @@ function onInit() {
     addEventListeners()
 }
 
-
-
 function renderMeme() {
     const elTxtChanger = document.getElementById('meme-text')
     elTxtChanger.value = getLineTxt()
@@ -51,11 +49,15 @@ function onImgClick(event) {
     };
 }
 
-function onAddLine(event) {
-    console.log('event', event)
-    console.log('im in the onAddLine ');
+function onAddLine() {
     addLine()
     renderMeme()
+}
+
+function onSwitchLine(event) {
+    console.log('this is the meme.controller speaking');
+    switchLine()
+    // renderMeme()
 }
 
 function onChangeTxt(event) {
@@ -74,20 +76,6 @@ function drawText(text, x, y, size, color, stroke) {
     gCtx.textBaseline = 'middle'
     gCtx.fillText(text, x, y)
     gCtx.strokeText(text, x, y)
-}
-
-function handleImageUpload(event) {
-    const file = event.target.files[0];
-    if (!file.type.startsWith('image/')) { return; }
-
-    const reader = new FileReader();
-    reader.onload = function (e) {
-        gImg.src = e.target.result;
-        gImg.onload = function () {
-            renderMeme();
-        };
-    };
-    reader.readAsDataURL(file);
 }
 
 function downloadCanvas() {
@@ -130,6 +118,19 @@ function onSetStroke(stroke) {
     renderMeme()
 }
 
+function handleImageUpload(event) {
+    const file = event.target.files[0];
+    if (!file.type.startsWith('image/')) { return; }
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        gImg.src = e.target.result;
+        gImg.onload = function () {
+            renderMeme();
+        };
+    };
+    reader.readAsDataURL(file);
+}
 
 function addEventListeners() {
     //listen to CHANGE events on the upload image
@@ -168,5 +169,11 @@ function addEventListeners() {
     const addLine = document.querySelector('.line-new');
     if (addLine) {
         addLine.addEventListener('click', onAddLine, false);
+    }
+
+    //listen to CLICK events on the switchLine button
+    const switchLine = document.querySelector('.line-switch');
+    if (switchLine) {
+        switchLine.addEventListener('click', onSwitchLine, false);
     }
 }
