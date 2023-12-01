@@ -1,52 +1,16 @@
 'use strict'
 
-let gElCanvas
-let gCtx
-let gImg
-let gCurrTxtSize
-let gCurrColor
-let gCurrStroke
 
-function onInit() {
-    gElCanvas = document.querySelector('canvas')
-    gCtx = gElCanvas.getContext('2d')
-    gImg = new Image()
-    gCurrTxtSize = getTxtSize()
 
+function onInitMemes() {
     addEventListeners()
+    initMeme()
 }
 
-function renderMeme() {
+function onRenderMeme() {
     const elTxtChanger = document.getElementById('meme-text')
     elTxtChanger.value = getLineTxt()
-
-    gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
-    gCtx.drawImage(gImg, 0, 0, gElCanvas.width, gElCanvas.height)
-
-    gMemes.lines.forEach((line, index) => {
-        // Calculate Y-position for each line
-        let yPos = (index + 1) * (line.size + 10); // Example calculation
-        drawText(line.txt, gElCanvas.width / 2, yPos, line.size, line.color, line.stroke);
-    });
-}
-
-function onImgClick(event) {
-    gImg.src = event.target.src;
-    gImg.onload = function () {
-
-        // Update the current color based on the selected line's color
-        gCurrColor = colorNameToHex(getTxtColor()); // Ensure this is in hex format
-        gCurrStroke = colorNameToHex(getTxtStroke())
-
-        // Update the color picker's value to reflect the current color
-        const elTxtColorChanger = document.querySelector('.color-picker');
-        elTxtColorChanger.value = gCurrColor;
-
-        const elTxtStrokeChanger = document.querySelector('.stroke-picker');
-        elTxtStrokeChanger.value = gCurrStroke;
-
-        renderMeme();
-    };
+    renderMeme()
 }
 
 function onAddLine() {
@@ -54,6 +18,8 @@ function onAddLine() {
     renderMeme()
 }
 
+
+// IM WORKING ON THIS BUT WENT TO FIX THE MVC A LITTLE
 function onSwitchLine(event) {
     console.log('this is the meme.controller speaking');
     switchLine()
@@ -66,43 +32,18 @@ function onChangeTxt(event) {
     renderMeme()
 }
 
-function drawText(text, x, y, size, color, stroke) {
-    gCtx.lineWidth = 1
-    gCtx.fillStyle = color
-    gCtx.strokeStyle = stroke
-    gCtx.font = size + 'px Arial';
-
-    gCtx.textAlign = 'center'
-    gCtx.textBaseline = 'middle'
-    gCtx.fillText(text, x, y)
-    gCtx.strokeText(text, x, y)
-}
-
-function downloadCanvas() {
-    // Get the canvas data as an image (PNG format by default)
-    const imageData = gElCanvas.toDataURL("image/png");
-
-    // Create a temporary link element
-    const downloadLink = document.createElement('a');
-    downloadLink.href = imageData;
-    // Name the download file
-    downloadLink.download = `your-funny-meme.png`;
-
-    // Append the link to the document, trigger click, then remove the link
-    document.body.appendChild(downloadLink);
-    downloadLink.click();
-    document.body.removeChild(downloadLink);
-}
-
 function onIncrTxtSize() {
-    gCurrTxtSize++
-    setTxtSize(gCurrTxtSize)
+
+    //these get removed to do mvc properly
+    // gCurrTxtSize++
+    // setTxtSize(gCurrTxtSize)
+
+    incrTxtSize()
     renderMeme()
 }
 
 function onDecrTxtSize() {
-    gCurrTxtSize--
-    setTxtSize(gCurrTxtSize)
+    decrTxtSize()
     renderMeme()
 }
 
@@ -177,3 +118,25 @@ function addEventListeners() {
         switchLine.addEventListener('click', onSwitchLine, false);
     }
 }
+
+// FILE SAVE/DOWNLOAD/SHARE
+
+//TODO: create saveMeme function
+
+function downloadCanvas() {
+    // Get the canvas data as an image (PNG format by default)
+    const imageData = gElCanvas.toDataURL("image/png");
+
+    // Create a temporary link element
+    const downloadLink = document.createElement('a');
+    downloadLink.href = imageData;
+    // Name the download file
+    downloadLink.download = `your-funny-meme.png`;
+
+    // Append the link to the document, trigger click, then remove the link
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
+}
+
+//TODO: create shareMemeToFacebook function
