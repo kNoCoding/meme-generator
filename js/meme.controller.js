@@ -24,7 +24,12 @@ function renderMeme() {
 
     gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
     gCtx.drawImage(gImg, 0, 0, gElCanvas.width, gElCanvas.height)
-    drawText(getLineTxt(), gElCanvas.width / 2, gElCanvas.height / 2)
+
+    gMemes.lines.forEach((line, index) => {
+        // Calculate Y-position for each line
+        let yPos = (index + 1) * (line.size + 10); // Example calculation
+        drawText(line.txt, gElCanvas.width / 2, yPos, line.size, line.color, line.stroke);
+    });
 }
 
 function onImgClick(event) {
@@ -59,11 +64,11 @@ function onChangeTxt(event) {
     renderMeme()
 }
 
-function drawText(text, x, y) {
+function drawText(text, x, y, size, color, stroke) {
     gCtx.lineWidth = 1
-    gCtx.fillStyle = gCurrColor
-    gCtx.strokeStyle = gCurrStroke
-    gCtx.font = gCurrTxtSize + 'px Arial';
+    gCtx.fillStyle = color
+    gCtx.strokeStyle = stroke
+    gCtx.font = size + 'px Arial';
 
     gCtx.textAlign = 'center'
     gCtx.textBaseline = 'middle'
