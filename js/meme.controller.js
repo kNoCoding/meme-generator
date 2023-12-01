@@ -46,6 +46,13 @@ function onImgClick(event) {
     };
 }
 
+function onAddLine(event) {
+    console.log('event', event)
+    console.log('im in the onAddLine ');
+    addLine()
+    renderMeme()
+}
+
 function onChangeTxt(event) {
     let newTxt = event.target.value
     setLineTxt(newTxt)
@@ -150,5 +157,11 @@ function addEventListeners() {
     const decrTxtSize = document.querySelector('.decr-fs');
     if (decrTxtSize) {
         decrTxtSize.addEventListener('click', onDecrTxtSize, false);
+    }
+
+    //listen to CLICK events on the incrTxtSize button
+    const addLine = document.querySelector('.line-new');
+    if (addLine) {
+        addLine.addEventListener('click', onAddLine, false);
     }
 }

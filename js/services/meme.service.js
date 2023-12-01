@@ -1,22 +1,23 @@
 'use strict'
 
+
+let gLineNum = 1
 let gMemes = {
     selectedImgId: 5,
     selectedLineIdx: 0,
-    lines: [
-        {
-            txt: 'No tears at all',
-            size: 20,
-            color: 'green',
-            stroke: 'blue',
-        }
-    ]
+    lines: [_createNewLine()]
 }
+
 let gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
 
 function getMeme(imgUrl) {
     return gGallery.find(img => imgUrl === img.url)
+}
+
+function addLine() {
+    const lines = gMemes.lines
+    lines.push(_createNewLine())
 }
 
 function getLineTxt() {
@@ -65,6 +66,21 @@ function setTxtStroke(newStroke) {
     gMemes.lines[gMemes.selectedLineIdx].stroke = newStroke
 }
 
+
+
+// private functions
+
+function _createNewLine(lineNum = gLineNum++, txt = "New Line", size = 20, color = 'black', stroke = 'white') {
+    return {
+        lineNum,
+        txt,
+        size,
+        color,
+        stroke,
+    }
+}
+
+
 // util function
 
 function colorNameToHex(color) {
@@ -72,6 +88,9 @@ function colorNameToHex(color) {
         "red": "#ff0000",
         "blue": "#0000ff",
         "green": "#008000",
+        "black": "#000000",
+        "white": "#ffffff",
+
         // Add more mappings as needed
     };
 
