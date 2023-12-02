@@ -181,7 +181,7 @@ function _createMeme(imgUrl, lines = []) {
     // Check if lines array is empty and add a default line
     if (lines.length === 0) {
         lines.push({
-            txt: 'Enter your text here', // Default text
+            txt: 'Line of tears', // Default text
             size: 20,                   // Default size
             color: 'black',             // Default color
             stroke: 'white'             // Default stroke
