@@ -6,7 +6,6 @@ let gElCanvas, gCtx, gMeme, gImg, gCurrTxtSize, gCurrColor, gCurrStroke
 
 let gLineNum = 1
 let gMemes = loadFromStorage(MEMES_STORAGE_KEY) || []
-let gMemeId = 0
 
 /********************/// GLOBALS ///********************/
 
@@ -192,7 +191,7 @@ function _createMeme(imgUrl, lines = []) {
     }
 
     return {
-        id: gMemeId++,
+        id: generateUniqueId(),
         imgUrl,
         lines,
         selectedLineIdx: 0 // Initialize with 0, assuming the first line is selected by default

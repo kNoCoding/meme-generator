@@ -174,7 +174,9 @@ function downloadCanvas() {
 function _saveMeme() {
     const memeImageURL = gElCanvas.toDataURL("image/png");
 
-    // If it's a new meme (no ID assigned yet), generate a unique ID
+
+
+   // If it's a new meme (no ID assigned yet), generate a unique ID
     if (gMeme.id == null) {
         gMeme.id = generateUniqueId();
     }
