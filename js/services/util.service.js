@@ -57,3 +57,14 @@ function colorNameToHex(color) {
 
     return colors[color.toLowerCase()] || color;
 }
+
+function generateUniqueId() {
+    // Use the current timestamp
+    const timestamp = new Date().getTime().toString(36);
+
+    // Generate a random 4-character string
+    const randomString = Math.random().toString(36).substr(2, 4);
+
+    // Combine timestamp and random string
+    return timestamp + randomString;
+}

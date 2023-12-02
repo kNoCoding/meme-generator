@@ -15,11 +15,14 @@ _createMemes()
 
 /********************/// INIT AND SETUP ///********************/
 function initMemes() {
-    gElCanvas = document.querySelector('canvas')
-    gCtx = gElCanvas.getContext('2d')
-    gImg = new Image()
-    gCurrTxtSize = getTxtSize()
+    gElCanvas = document.querySelector('canvas');
+    gCtx = gElCanvas.getContext('2d');
+    gImg = new Image();
+    gCurrTxtSize = getTxtSize();
 
+    // Load memes from local storage or initialize with a default meme
+    gMemes = loadFromStorage(MEMES_STORAGE_KEY) || [_createDefaultMeme()];
+    renderMemes();
 }
 /********************/// INIT AND SETUP ///********************/
 
@@ -193,6 +196,15 @@ function _createMeme(imgUrl, lines = []) {
         imgUrl,
         lines,
         selectedLineIdx: 0 // Initialize with 0, assuming the first line is selected by default
+    };
+}
+
+function _createDefaultMeme() {
+    return {
+        id: 0, // Assign a unique ID for the default meme
+        imgUrl: 'path/to/default/image.jpg',
+        lines: [{ txt: 'Default Text', size: 20, color: 'black', stroke: 'white' }],
+        selectedLineIdx: 0
     };
 }
 

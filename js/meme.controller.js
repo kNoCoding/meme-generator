@@ -8,15 +8,6 @@ function onInitMemes() {
     renderMemes()
 }
 
-function updateColorAndStrokeInputs() {
-    const colorPicker = document.querySelector('.color-picker');
-    const strokePicker = document.querySelector('.stroke-picker');
-    if (gMeme && gMeme.lines && gMeme.selectedLineIdx != null) {
-        colorPicker.value = colorNameToHex(gMeme.lines[gMeme.selectedLineIdx].color);
-        strokePicker.value = colorNameToHex(gMeme.lines[gMeme.selectedLineIdx].stroke);
-    }
-}
-
 function addMemeOnCanvasEventListeners() {
 
     //listen to INPUT events on the meme text input
@@ -24,7 +15,7 @@ function addMemeOnCanvasEventListeners() {
     memeTextChanger.addEventListener('input', onChangeTxt, false)
 
     const saveBtn = document.querySelector('.saveBtn')
-    saveBtn.addEventListener('click', saveMeme);
+    saveBtn.addEventListener('click', _saveMeme);
 
 
     //listen to CLICK events on the download button
@@ -64,7 +55,6 @@ function addMemeOnCanvasEventListeners() {
     }
 }
 
-
 function renderMemes() {
     const memesContainer = document.querySelector('.memes-container');
     let html = '';
@@ -78,6 +68,19 @@ function renderMemes() {
     memesContainer.innerHTML = html;
 }
 /********************/// INIT AND SETUP ///********************/
+
+
+
+/********************/// VIEW FUNCTIONS ///********************/
+function updateColorAndStrokeInputs() {
+    const colorPicker = document.querySelector('.color-picker');
+    const strokePicker = document.querySelector('.stroke-picker');
+    if (gMeme && gMeme.lines && gMeme.selectedLineIdx != null) {
+        colorPicker.value = colorNameToHex(gMeme.lines[gMeme.selectedLineIdx].color);
+        strokePicker.value = colorNameToHex(gMeme.lines[gMeme.selectedLineIdx].stroke);
+    }
+}
+/********************/// VIEW FUNCTIONS ///********************/
 
 
 
@@ -137,10 +140,8 @@ function onImageUpload(event) {
     imageUpload(file)
 }
 
-//TODO: create the onSaveMeme and all what it needs - model and an event listner change
 function onSaveMeme() {
-    saveMeme(); // Call model function to save the meme
-    // Additional UI logic if necessary
+    _saveMeme()
 }
 
 function onShareMemeToFacebook() {
@@ -150,35 +151,6 @@ function onShareMemeToFacebook() {
 
 
 /********************/// FILE OPERATIONS ///********************/
-function saveMeme() {
-    const memeImageURL = gElCanvas.toDataURL("image/png");
-
-    if (gMeme.id == null) {
-        // Assign a new unique ID to the meme
-        gMeme.id = gMemes.length;
-    }
-
-    const newMeme = {
-        id: gMeme.id,
-        imgUrl: memeImageURL,
-        // Include any other metadata if necessary
-    };
-
-    // Find index of the existing meme
-    const existingMemeIndex = gMemes.findIndex(meme => meme.id === newMeme.id);
-
-    if (existingMemeIndex !== -1) {
-        // Update existing meme
-        gMemes[existingMemeIndex] = newMeme;
-    } else {
-        // Add new meme
-        gMemes.push(newMeme);
-    }
-
-    _saveMemesToStorage(); // Save the updated array to local storage
-    renderMemes(); // Re-render the list of saved memes
-}
-
 function downloadCanvas() {
     // Get the canvas data as an image (PNG format by default)
     const imageData = gElCanvas.toDataURL("image/png");
@@ -194,4 +166,37 @@ function downloadCanvas() {
     downloadLink.click();
     document.body.removeChild(downloadLink);
 }
-/********************/// FILE OPERATIONS ///********************/
+//*******************/// FILE OPERATIONS ///*******************//
+
+
+
+// PRIVATE FUNCTIONS
+function _saveMeme() {
+    const memeImageURL = gElCanvas.toDataURL("image/png");
+
+    // If it's a new meme (no ID assigned yet), generate a unique ID
+    if (gMeme.id == null) {
+        gMeme.id = generateUniqueId();
+    }
+
+    // Create a new meme object with the current state
+    const newMeme = {
+        id: gMeme.id,
+        imgUrl: memeImageURL,
+        // Add other meme properties if needed
+    };
+
+    // Check if the meme already exists in the array
+    const existingMemeIndex = gMemes.findIndex(meme => meme.id === newMeme.id);
+
+    // If the meme exists, update it; otherwise, add it as a new meme
+    if (existingMemeIndex !== -1) {
+        gMemes[existingMemeIndex] = newMeme;
+    } else {
+        gMemes.push(newMeme);
+    }
+
+    // Additional code for saving to storage and rendering
+    _saveMemesToStorage();
+    renderMemes();
+}
