@@ -3,24 +3,29 @@
 
 /********************/// INIT AND SETUP ///********************/
 function onInitMemes() {
-    addEventListeners()
-    initMeme()
+    addMemeOnCanvasEventListeners()
+    initMemes()
+    renderMemes()
 }
 
-function addEventListeners() {
-    //listen to CHANGE events on the upload image
-    const imageUploader = document.getElementById('imageUpload')
-    imageUploader.addEventListener('change', onImageUpload, false)
+function updateColorAndStrokeInputs() {
+    const colorPicker = document.querySelector('.color-picker');
+    const strokePicker = document.querySelector('.stroke-picker');
+    if (gMeme && gMeme.lines && gMeme.selectedLineIdx != null) {
+        colorPicker.value = colorNameToHex(gMeme.lines[gMeme.selectedLineIdx].color);
+        strokePicker.value = colorNameToHex(gMeme.lines[gMeme.selectedLineIdx].stroke);
+    }
+}
 
-    //listen to CLICK events on the gallery images
-    const gallery = document.querySelector('.gallery')
-    gallery.addEventListener('click', function (event) {
-        if (event.target.tagName === 'IMG') onImgClick(event)
-    })
+function addMemeOnCanvasEventListeners() {
 
     //listen to INPUT events on the meme text input
     const memeTextChanger = document.getElementById('meme-text')
     memeTextChanger.addEventListener('input', onChangeTxt, false)
+
+    const saveBtn = document.querySelector('.saveBtn')
+    saveBtn.addEventListener('click', saveMeme);
+
 
     //listen to CLICK events on the download button
     const downloadBtn = document.querySelector('.downloadBtn')
@@ -40,13 +45,13 @@ function addEventListeners() {
         incrTxtSize.addEventListener('click', onIncrTxtSize, false)
     }
 
-    //listen to CLICK events on the incrTxtSize button
+    //listen to CLICK events on the decrTxtSize button
     const decrTxtSize = document.querySelector('.decr-fs')
     if (decrTxtSize) {
         decrTxtSize.addEventListener('click', onDecrTxtSize, false)
     }
 
-    //listen to CLICK events on the incrTxtSize button
+    //listen to CLICK events on the newLone button
     const addLine = document.querySelector('.line-new')
     if (addLine) {
         addLine.addEventListener('click', onAddLine, false)
@@ -58,20 +63,34 @@ function addEventListeners() {
         switchLine.addEventListener('click', onSwitchLine, false)
     }
 }
+
+
+function renderMemes() {
+    const memesContainer = document.querySelector('.memes-container');
+    let html = '';
+
+    gMemes.forEach(meme => {
+        html += `<div class="meme">
+                    <img src="${meme.imgUrl}" alt="Saved Meme">
+                 </div>`;
+    });
+
+    memesContainer.innerHTML = html;
+}
 /********************/// INIT AND SETUP ///********************/
 
 
 
 /********************/// EVENT HANDLERS ///********************/
-function onRenderMeme() {
+function onRenderMemeOnCanvas() {
     const elTxtChanger = document.getElementById('meme-text')
     elTxtChanger.value = getLineTxt()
-    renderMeme()
+    renderMemeOnCanvas()
 }
 
 function onAddLine() {
     addLine()
-    renderMeme()
+    renderMemeOnCanvas()
 }
 
 
@@ -80,7 +99,7 @@ function onAddLine() {
 function onSwitchLine(event) {
     console.log('this is the meme.controller speaking');
     switchLine()
-    // renderMeme()
+    // renderMemeOnCanvas()
 }
 
 
@@ -88,27 +107,27 @@ function onSwitchLine(event) {
 function onChangeTxt(event) {
     let newTxt = event.target.value
     setLineTxt(newTxt)
-    renderMeme()
+    renderMemeOnCanvas()
 }
 
 function onIncrTxtSize() {
     incrTxtSize()
-    renderMeme()
+    renderMemeOnCanvas()
 }
 
 function onDecrTxtSize() {
     decrTxtSize()
-    renderMeme()
+    renderMemeOnCanvas()
 }
 
 function onSetColor(color) {
     setTxtColor(color)
-    renderMeme()
+    renderMemeOnCanvas()
 }
 
 function onSetStroke(stroke) {
     setTxtStroke(stroke)
-    renderMeme()
+    renderMemeOnCanvas()
 }
 
 // this function handles user image uploads to use strictly for meme creation
@@ -127,13 +146,38 @@ function onSaveMeme() {
 function onShareMemeToFacebook() {
     shareMemeToFacebook()
 }
-
 /********************/// EVENT HANDLERS ///********************/
 
 
 /********************/// FILE OPERATIONS ///********************/
-//TODO: create saveMeme function that saves the meme to a memes model that will be shown in the memes tab
-function saveMeme(){}
+function saveMeme() {
+    const memeImageURL = gElCanvas.toDataURL("image/png");
+
+    if (gMeme.id == null) {
+        // Assign a new unique ID to the meme
+        gMeme.id = gMemes.length;
+    }
+
+    const newMeme = {
+        id: gMeme.id,
+        imgUrl: memeImageURL,
+        // Include any other metadata if necessary
+    };
+
+    // Find index of the existing meme
+    const existingMemeIndex = gMemes.findIndex(meme => meme.id === newMeme.id);
+
+    if (existingMemeIndex !== -1) {
+        // Update existing meme
+        gMemes[existingMemeIndex] = newMeme;
+    } else {
+        // Add new meme
+        gMemes.push(newMeme);
+    }
+
+    _saveMemesToStorage(); // Save the updated array to local storage
+    renderMemes(); // Re-render the list of saved memes
+}
 
 function downloadCanvas() {
     // Get the canvas data as an image (PNG format by default)

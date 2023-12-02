@@ -1,15 +1,12 @@
 =============================================================
-TODO - DUE 02122023 2100
+TODO - DUE 02122023 2100 - 
+     - project overdue, finish whenever 
 =============================================================
 
-
+        16.5) FIX THE ENTIRE CODES MVC AND GROUPING IN THE FILES
         17) Draw a frame around the selected line (so the user can see which line is
         selected)
         18) Use a single set of control-boxes to handle all the different lines
-
-    BUGS:
-        - when uploading an image it appears in the canvas with the default text but the text doesnt appear in the text changer. i think the issue is that the image is not beign added to the gallery. 
-
 
 =============================================================
 IN PROGRESS
@@ -17,14 +14,6 @@ IN PROGRESS
 
     MAIN TASKS:
         16) Add the button “switch line”, that switches the selected line
-
-    SERIOUS STUFF I GOT MYSELF INTO ㄟ( ▔, ▔ )ㄏ
-        - complete the saveMeme()
-            - in the controller
-            - in the model
-+++++++++THIS RAISES A HUGE PROBLEM FML+++++++++
-i will have to change the MEMES_STORAGE_KEY to be a IMG_STORAGE_KEY because they are simple images at this state. this means quite a refactor..
-
 
 =============================================================
 DONE
@@ -64,9 +53,14 @@ DONE
         14) Render the lines on the canvas
         15) Add the button “add line”
 
-
-    SERIOUS STUFF I GOT MYSELF INTO ㄟ( ▔, ▔ )ㄏ
-    
-        - complete the onShareMemeToFacebook()
+*******THIS "SMALL" mistake COST ME ~5.5 hours :)*******
+       SERIOUS STUFF I GOT MYSELF INTO ㄟ( ▔, ▔ )ㄏ
+        - complete the saveMeme()
             - in the controller
-            - in the util
+            - in the model
+        ++THIS RAISES A HUGE PROBLEM FML++
+i will have to change the MEMES_STORAGE_KEY to be a IMG_STORAGE_KEY because they are simple images at this state. this means quite a refactor..
+*******THIS "SMALL" mistake COST ME ~5.5 hours :)*******
+
+    BUGS FIXED:
+        - when uploading an image it appears in the canvas with the default text but the text doesnt appear in the text changer. i think the issue is that the image is not beign added to the gallery. 

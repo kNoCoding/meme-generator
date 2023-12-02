@@ -1,9 +1,14 @@
 'use strict'
 
-const IMAGES_STORAGE_KEY = 'imagesDB'
+const GALLERY_STORAGE_KEY = 'galleryDB'
 
-var gGallery
-var gImgId = 0
+let gGallery
+let gImgId = 0
+let gKeywordSearchCountMap = {
+    'funny': 12,
+    'cat': 16,
+    'baby': 2
+}
 
 _createGallery()
 
@@ -24,7 +29,7 @@ function _createImg(imgNum, keywords = ['funny', 'cat']) {
 }
 
 function _createGallery() {
-    gGallery = loadFromStorage(IMAGES_STORAGE_KEY)
+    gGallery = loadFromStorage(GALLERY_STORAGE_KEY)
     if (gGallery && gGallery.length) return
 
     gGallery = [
@@ -35,5 +40,5 @@ function _createGallery() {
 }
 
 function _saveGalleryToStorage() {
-    saveToStorage(IMAGES_STORAGE_KEY, gGallery)
+    saveToStorage(GALLERY_STORAGE_KEY, gGallery)
 }
