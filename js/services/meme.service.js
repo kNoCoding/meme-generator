@@ -42,6 +42,15 @@ function renderMeme() {
     });
 }
 
+function imageUpload(file) {
+    const reader = new FileReader()
+    reader.onload = function (e) {
+        gImg.src = e.target.result
+        gImg.onload = renderMeme
+    }
+    reader.readAsDataURL(file);
+}
+
 function drawText(text, x, y, size, color, stroke) {
     gCtx.lineWidth = 1
     gCtx.fillStyle = color
