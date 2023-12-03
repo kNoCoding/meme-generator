@@ -28,8 +28,7 @@ IN PROGRESS
         16) Add the button “switch line”, that switches the selected line
 
     URGENT: 
-        - change the onchange on the color pickers to oninput
-        - fix bug when on image upload image doesnt appear in canvas
+
         - stick the footer to the bottom
         - put the buttons in the grid
         - put the meme beside the the controls
@@ -77,14 +76,15 @@ DONE
         14) Render the lines on the canvas
         15) Add the button “add line”
 
-*******THIS "SMALL" mistake COST ME ~5.5 hours :)*******
-       SERIOUS STUFF I GOT MYSELF INTO ㄟ( ▔, ▔ )ㄏ
-        - complete the saveMeme()
-            - in the controller
-            - in the model
-        ++THIS RAISES A HUGE PROBLEM FML++
-i will have to change the MEMES_STORAGE_KEY to be a IMG_STORAGE_KEY because they are simple images at this state. this means quite a refactor..
-*******THIS "SMALL" mistake COST ME ~5.5 hours :)*******
+        *******THIS "SMALL" mistake COST ME ~5.5 hours :)*******
+            SERIOUS STUFF I GOT MYSELF INTO ㄟ( ▔, ▔ )ㄏ
+                - complete the saveMeme()
+                    - in the controller
+                    - in the model
+                ++THIS RAISES A HUGE PROBLEM FML++
+        i will have to change the MEMES_STORAGE_KEY to be a IMG_STORAGE_KEY because they are simple images at this state. this means quite a refactor..
+        *******THIS "SMALL" mistake COST ME ~5.5 hours :)*******
+
 
     BUGS FIXED:
         - when uploading an image it appears in the canvas with the default text but the text doesnt appear in the text changer. i think the issue is that the image is not beign added to the gallery. 
@@ -93,3 +93,5 @@ i will have to change the MEMES_STORAGE_KEY to be a IMG_STORAGE_KEY because they
 NEW DONE - DUE 04122023 0830 - 
     - create css structure
     - edit the header 
+    - change the onchange on the color pickers to oninput
+    - fix bug when on image upload image doesnt appear in canvas
