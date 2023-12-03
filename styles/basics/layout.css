@@ -1,0 +1,35 @@
+/* MAIN LAYOUT */
+
+.main-layout {
+    display: grid;
+    grid-template-columns: 20px 1fr 20px;
+  }
+  
+  .main-layout > *:not(.full) {
+    grid-column: 2;
+  }
+  
+  .main-layout > *.full {
+    grid-column: 1 / -1;
+  }
+  
+
+  /* TODO: CHANGE THIS AS NEEDED FOR THIS PROJECT */
+  /* CARD LAYOUT */
+  
+  /* .card-layout > * {
+    margin-bottom: 60px;
+  }
+  
+  .card-layout > *:nth-child(even) {
+    grid-column: 2;
+  }
+  
+  .card-layout > *:nth-child(odd) {
+    grid-column: 4;
+  }
+  
+  .card-layout > *:first-child {
+    grid-column: 1 / -1;
+  } */
+  

@@ -1,26 +1,18 @@
-* {
-   box-sizing: border-box;
-   margin: 0;
-}
+/* SETUP */
 
-header{
-    background-color: ivory;
-}
+@import url("./setup/variables.css");
+/* TODO SETUP FONTS */
+/* @import url("./setup/typography.css"); */
 
-body{
-    background-color: lightslategray;
+/* BASICS */
 
-}
+@import url("./basics/base.css");
+@import url("./basics/layout.css");
+@import url("./basics/helpers.css");
 
-footer{
-    color: ivory;
-    background-color: rgb(10, 10, 10);
-}
+/* COMPONENTS */
+@import url("./components/header.css");
+@import url("./components/main-screen.css");
 
-canvas{
-    border: 3px solid black;
-}
 
-img{
-    width: 50px;
-}
+@import url("./setup/mq.css");

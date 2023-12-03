@@ -1,6 +1,18 @@
 =============================================================
 TODO - DUE 02122023 2100 - 
      - project overdue, finish whenever 
+
+NEW TODO - DUE 04122023 0830 - 
+    - change the onchange on the color pickers to oninput
+    - stick the footer to the bottom
+    - put the buttons in the grid
+    - put the meme beside the the controls
+    - seperate gallery and editor and memes
+    - create about section - gonna be a modal
+    - hide the disabled buttons (?)
+    - implement delete
+    - put the incons in the buttons line up line down
+
 =============================================================
 
         16.5) FIX THE ENTIRE CODES MVC AND GROUPING IN THE FILES
@@ -15,6 +27,18 @@ IN PROGRESS
     MAIN TASKS:
         16) Add the button “switch line”, that switches the selected line
 
+    URGENT: 
+        - change the onchange on the color pickers to oninput
+        - fix bug when on image upload image doesnt appear in canvas
+        - stick the footer to the bottom
+        - put the buttons in the grid
+        - put the meme beside the the controls
+        - seperate gallery and editor and memes
+        - create about section - gonna be a modal
+        - hide the disabled buttons (?)
+        - implement delete
+        - put the incons in the buttons line up line down
+        
 =============================================================
 DONE
 =============================================================
@@ -64,3 +88,8 @@ i will have to change the MEMES_STORAGE_KEY to be a IMG_STORAGE_KEY because they
 
     BUGS FIXED:
         - when uploading an image it appears in the canvas with the default text but the text doesnt appear in the text changer. i think the issue is that the image is not beign added to the gallery. 
+
+
+NEW DONE - DUE 04122023 0830 - 
+    - create css structure
+    - edit the header 

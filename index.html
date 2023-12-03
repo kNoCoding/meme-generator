@@ -8,19 +8,23 @@
     <title>Meme Generator</title>
 </head>
 
-<body onload="onInitGallery(), onInitMemes()">
-    <header class="main-header">
+<body class="main-layout" onload="onInitGallery(), onInitMemes()">
+
+    <div class="main-screen" onclick="toggleMenu()"></div>
+    <header class="main-header flex space-between align-center">
         <div class="logo">
             <h1>TearsGenerator</h1>
         </div>
-        <nav>
-            <ul>
+        <nav class="main-nav">
+            <ul class="main-nav-list flex clean-list">
                 <li><a href="#">Memes</a></li>
                 <li><a href="#">Gallery</a></li>
                 <li><a href="#">About</a></li>
             </ul>
         </nav>
+        <button class="btn-toggle-menu" onclick="toggleMenu()">☰</button>
     </header>
+
     <div class="search-box">
         <input type="text" name="search-box" id="search-box" placeholder="Search" disabled>
     </div>
@@ -99,6 +103,7 @@
     <script src="js/services/meme.service.js"></script>
     <script src="js/gallery.controller.js"></script>
     <script src="js/meme.controller.js"></script>
+
 </body>
 
 </html>
