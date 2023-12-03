@@ -54,6 +54,18 @@ function addMemeOnCanvasEventListeners() {
         switchLine.addEventListener('click', onSwitchLine, false)
     }
 
+    // Listen to CLICK events on the line-up button
+    const lineUpBtn = document.querySelector('.line-up');
+    if (lineUpBtn) {
+        lineUpBtn.addEventListener('click', moveLinePositionUp, false);
+    }
+
+    // Listen to CLICK events on the line-down button
+    const lineDownBtn = document.querySelector('.line-down');
+    if (lineDownBtn) {
+        lineDownBtn.addEventListener('click', moveLinePositionDown, false);
+    }
+
     // Listen to CLICK events on the delete line button
     const deleteLineBtn = document.querySelector('.line-delete');
     if (deleteLineBtn) {
@@ -89,6 +101,21 @@ function onRenderMemeOnCanvas() {
     updateDeleteLineButton();     // Update the state of the delete line button
 }
 
+function onSwitchLine(event) {
+    switchLine();
+    onRenderMemeOnCanvas();  // Update UI and canvas
+}
+
+function onMoveLineUp() {
+    moveLineUp();
+    onRenderMemeOnCanvas();  // Update UI and canvas
+}
+
+function onMoveLineDown() {
+    moveLineDown();
+    onRenderMemeOnCanvas();  // Update UI and canvas
+}
+
 function onAddLine() {
     addLine();
     gMeme.selectedLineIdx = gMeme.lines.length - 1;
@@ -97,11 +124,6 @@ function onAddLine() {
 
 function onDeleteLine() {
     deleteLine();
-    onRenderMemeOnCanvas();  // Update UI and canvas
-}
-
-function onSwitchLine(event) {
-    switchLine();
     onRenderMemeOnCanvas();  // Update UI and canvas
 }
 

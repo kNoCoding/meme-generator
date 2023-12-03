@@ -9,7 +9,6 @@ NEW TODO
         - seperate gallery and editor and memes
         - create about section - gonna be a modal
         - hide the disabled buttons (?)
-        - implement delete
         - put the incons in the buttons - line up line down
 
     TODO - DUE 02122023 2100 - 
@@ -95,3 +94,4 @@ NEW DONE - DUE 04122023 0830 -
     16) Add the button “switch line”, that switches the selected line
 
     - implement delete
+    - implement lineUp lineDown (y axis)

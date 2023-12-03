@@ -29,16 +29,14 @@ function initMemes() {
 
 /********************/// FUNCTIONALITIES ///********************/
 function renderMemeOnCanvas() {
-    gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
-    gCtx.drawImage(gImg, 0, 0, gElCanvas.width, gElCanvas.height)
+    gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
+    gCtx.drawImage(gImg, 0, 0, gElCanvas.width, gElCanvas.height);
 
-    // Ensure gMeme and gMeme.lines are defined
     if (gMeme && gMeme.lines) {
-        gMeme.lines.forEach((line, index) => {
-            // Calculate Y-position for each line
-            let yPos = calculateLineYPosition(index, line.size) // Adjust as per your requirement
-            drawText(line.txt, gElCanvas.width / 2, yPos, line.size, line.color, line.stroke)
-        })
+        gMeme.lines.forEach(line => {
+            console.log('Drawing text:', line.txt, 'at position y:', line.y);
+            drawText(line.txt, gElCanvas.width / 2, line.y, line.size, line.color, line.stroke);
+        });
     }
 }
 
@@ -58,11 +56,24 @@ function updateTextInput() {
     }
 }
 
+function moveLinePositionUp() {
+    if (!gMeme || !gMeme.lines.length || gMeme.selectedLineIdx == null) return;
+    const line = gMeme.lines[gMeme.selectedLineIdx];
+    line.y -= 5; // Move up by 5px
+    onRenderMemeOnCanvas(); // Re-render the canvas
+}
+
+function moveLinePositionDown() {
+    if (!gMeme || !gMeme.lines.length || gMeme.selectedLineIdx == null) return;
+    const line = gMeme.lines[gMeme.selectedLineIdx];
+    line.y += 5; // Move down by 5px
+    onRenderMemeOnCanvas(); // Re-render the canvas
+}
+
 function updateDeleteLineButton() {
     const deleteBtn = document.querySelector('.line-delete');
     deleteBtn.disabled = !gMeme || !gMeme.lines.length;
 }
-
 
 function updateColorAndStrokeInputs() {
     const colorPicker = document.querySelector('.color-picker');
@@ -91,29 +102,27 @@ function imageUpload(file) {
 //consider removing 
 function addDefaultLine() {
     if (gMeme) {
-        gMeme.lines = [{ txt: 'Your text here', size: 20, color: 'black', stroke: 'white' }]
-        gMeme.selectedLineIdx = 0
+        gMeme.lines = [{ txt: 'Your text here', size: 20, color: 'black', stroke: 'white', y: 50 }];
+        gMeme.selectedLineIdx = 0;
     }
 }
 
 function drawText(text, x, y, size, color, stroke) {
-    gCtx.font = size + 'px Arial'
-    gCtx.fillStyle = color
-    gCtx.strokeStyle = stroke
-    gCtx.textAlign = 'center'
-    gCtx.textBaseline = 'middle'
-    gCtx.fillText(text, x, y)
-    gCtx.strokeText(text, x, y)
+    gCtx.font = size + 'px Arial';
+    gCtx.fillStyle = color;
+    gCtx.strokeStyle = stroke;
+    gCtx.textAlign = 'center';
+    gCtx.textBaseline = 'middle';
+    gCtx.fillText(text, x, y);
+    gCtx.strokeText(text, x, y);
 }
 
 function addLine() {
     if (gMeme) {
-        gMeme.lines.push({
-            txt: 'Another line of tears',
-            size: 20,
-            color: 'black',
-            stroke: 'white'
-        })
+        const newY = (gMeme.lines.length > 0) ? gMeme.lines[gMeme.lines.length - 1].y + 50 : 50;
+        gMeme.lines.push({ txt: 'Another line of tears', size: 20, color: 'black', stroke: 'white', y: newY });
+        gMeme.selectedLineIdx = gMeme.lines.length - 1;
+        onRenderMemeOnCanvas(); // Update UI and canvas
     }
 }
 
@@ -144,6 +153,26 @@ function switchLine() {
     updateTextInput()
     updateColorAndStrokeInputs()
     renderMemeOnCanvas()
+}
+
+function moveLineUp() {
+    if (!gMeme || gMeme.lines.length < 2 || gMeme.selectedLineIdx <= 0) return;
+
+    // Swap the selected line with the one above it
+    [gMeme.lines[gMeme.selectedLineIdx - 1], gMeme.lines[gMeme.selectedLineIdx]] =
+        [gMeme.lines[gMeme.selectedLineIdx], gMeme.lines[gMeme.selectedLineIdx - 1]];
+
+    gMeme.selectedLineIdx--;
+}
+
+function moveLineDown() {
+    if (!gMeme || gMeme.lines.length < 2 || gMeme.selectedLineIdx >= gMeme.lines.length - 1) return;
+
+    // Swap the selected line with the one below it
+    [gMeme.lines[gMeme.selectedLineIdx], gMeme.lines[gMeme.selectedLineIdx + 1]] =
+        [gMeme.lines[gMeme.selectedLineIdx + 1], gMeme.lines[gMeme.selectedLineIdx]];
+
+    gMeme.selectedLineIdx++;
 }
 
 function incrTxtSize() {
@@ -250,7 +279,8 @@ function _createMeme(imgUrl, lines = []) {
             txt: 'Line of tears',
             size: 20,
             color: 'black',
-            stroke: 'white'
+            stroke: 'white',
+            y: 50,
         })
     }
 
