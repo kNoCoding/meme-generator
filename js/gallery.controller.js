@@ -23,15 +23,6 @@ function onImgClick(event) {
     };
 }
 
-function updateTextInput() {
-    const elTxtChanger = document.getElementById('meme-text');
-    if (gMeme && gMeme.lines && gMeme.selectedLineIdx != null) {
-        elTxtChanger.value = gMeme.lines[gMeme.selectedLineIdx].txt;
-    } else {
-        elTxtChanger.value = '';
-    }
-}
-
 function addGalleryEventListeners() {
     // Listen to CHANGE events on the upload image to gallery
     const imageUploader = document.getElementById('imageUpload');

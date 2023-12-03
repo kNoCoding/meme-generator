@@ -93,6 +93,9 @@ function onRenderMemeOnCanvas() {
 
 function onAddLine() {
     addLine()
+    gMeme.selectedLineIdx = gMeme.lines.length - 1
+    updateTextInput()
+    updateColorAndStrokeInputs()
     renderMemeOnCanvas()
 }
 
@@ -100,9 +103,8 @@ function onAddLine() {
 
 // IM WORKING ON THIS BUT WENT TO FIX THE MVC A LITTLE
 function onSwitchLine(event) {
-    console.log('this is the meme.controller speaking');
+    console.log('this is the meme.controller speaking')
     switchLine()
-    // renderMemeOnCanvas()
 }
 
 

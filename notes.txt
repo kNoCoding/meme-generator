@@ -1,20 +1,21 @@
 =============================================================
-TODO - DUE 02122023 2100 - 
-     - project overdue, finish whenever 
-
-NEW TODO - DUE 04122023 0830 - 
-    - change the onchange on the color pickers to oninput
-    - stick the footer to the bottom
-    - put the buttons in the grid
-    - put the meme beside the the controls
-    - seperate gallery and editor and memes
-    - create about section - gonna be a modal
-    - hide the disabled buttons (?)
-    - implement delete
-    - put the incons in the buttons line up line down
-
+NEW TODO
 =============================================================
 
+    DUE 04122023 0830:
+        - stick the footer to the bottom
+        - put the buttons in a grid
+        - put the meme beside the  controls
+        - seperate gallery and editor and memes
+        - create about section - gonna be a modal
+        - hide the disabled buttons (?)
+        - implement delete
+        - put the incons in the buttons - line up line down
+
+    TODO - DUE 02122023 2100 - 
+        - project overdue, finish whenever 
+
+    MAIN TASKS:
         16.5) FIX THE ENTIRE CODES MVC AND GROUPING IN THE FILES
         17) Draw a frame around the selected line (so the user can see which line is
         selected)
@@ -24,11 +25,7 @@ NEW TODO - DUE 04122023 0830 -
 IN PROGRESS
 =============================================================
 
-    MAIN TASKS:
-        16) Add the button “switch line”, that switches the selected line
-
     URGENT: 
-
         - stick the footer to the bottom
         - put the buttons in the grid
         - put the meme beside the the controls
@@ -95,3 +92,7 @@ NEW DONE - DUE 04122023 0830 -
     - edit the header 
     - change the onchange on the color pickers to oninput
     - fix bug when on image upload image doesnt appear in canvas
+
+    16) Add the button “switch line”, that switches the selected line
+
+    - 

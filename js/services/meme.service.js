@@ -47,6 +47,15 @@ function calculateLineYPosition(index, size) {
     return (index + 1) * (size + 10)
 }
 
+function updateTextInput() {
+    const elTxtChanger = document.getElementById('meme-text');
+    if (gMeme && gMeme.lines && gMeme.selectedLineIdx != null) {
+        elTxtChanger.value = gMeme.lines[gMeme.selectedLineIdx].txt;
+    } else {
+        elTxtChanger.value = '';
+    }
+}
+
 function imageUpload(file) {
     const reader = new FileReader()
     reader.onload = function (e) {
@@ -81,15 +90,29 @@ function drawText(text, x, y, size, color, stroke) {
 
 function addLine() {
     if (gMeme) {
-        gMeme.lines.push({ txt: 'Another line of tears', size: 20, color: 'black', stroke: 'white' })
-        gMeme.selectedLineIdx = gMeme.lines.length - 1 // Select the new line
-        renderMemeOnCanvas() // Re-render the canvas
+        gMeme.lines.push({
+            txt: 'Another line of tears',
+            size: 20,
+            color: 'black',
+            stroke: 'white'
+        })
     }
-    updateColorAndStrokeInputs() // Update color and stroke inputs
 }
+
 function switchLine() {
-    console.log('and this is the meme.service speaking')
-    updateColorAndStrokeInputs() // Update color and stroke inputs
+    if (!gMeme || !gMeme.lines.length) return
+
+    // Move to the next line
+    gMeme.selectedLineIdx++
+    // If it's past the last line, go back to the first line
+    if (gMeme.selectedLineIdx >= gMeme.lines.length) {
+        gMeme.selectedLineIdx = 0
+    }
+
+    // Update the input fields and re-render the canvas
+    updateTextInput()
+    updateColorAndStrokeInputs()
+    renderMemeOnCanvas()
 }
 
 function incrTxtSize() {
@@ -152,7 +175,6 @@ function getTxtStroke() {
 function setLineTxt(newTxt) {
     if (gMeme && gMeme.lines && gMeme.selectedLineIdx != null) {
         gMeme.lines[gMeme.selectedLineIdx].txt = newTxt
-        renderMemeOnCanvas() // Re-render the canvas to show updated text
     }
 }
 
@@ -195,9 +217,9 @@ function _createMeme(imgUrl, lines = []) {
     if (lines.length === 0) {
         lines.push({
             txt: 'Line of tears',
-            size: 20,                
-            color: 'black',         
-            stroke: 'white'          
+            size: 20,
+            color: 'black',
+            stroke: 'white'
         })
     }
 
