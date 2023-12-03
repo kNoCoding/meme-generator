@@ -47,6 +47,8 @@ function calculateLineYPosition(index, size) {
     return (index + 1) * (size + 10)
 }
 
+
+/********************/// VIEW FUNCTIONS ///********************/
 function updateTextInput() {
     const elTxtChanger = document.getElementById('meme-text');
     if (gMeme && gMeme.lines && gMeme.selectedLineIdx != null) {
@@ -56,6 +58,22 @@ function updateTextInput() {
     }
 }
 
+function updateDeleteLineButton() {
+    const deleteBtn = document.querySelector('.line-delete');
+    deleteBtn.disabled = !gMeme || !gMeme.lines.length;
+}
+
+
+function updateColorAndStrokeInputs() {
+    const colorPicker = document.querySelector('.color-picker');
+    const strokePicker = document.querySelector('.stroke-picker');
+    if (gMeme && gMeme.lines && gMeme.selectedLineIdx != null) {
+        colorPicker.value = colorNameToHex(gMeme.lines[gMeme.selectedLineIdx].color);
+        strokePicker.value = colorNameToHex(gMeme.lines[gMeme.selectedLineIdx].stroke);
+    }
+}
+/********************/// VIEW FUNCTIONS ///********************/
+
 function imageUpload(file) {
     const reader = new FileReader()
     reader.onload = function (e) {
@@ -63,18 +81,18 @@ function imageUpload(file) {
         gImg.onload = function () {
             gMeme = _createMeme(gImg.src)
             addDefaultLine()
-            renderMemeOnCanvas()
-            updateTextInput()
-            updateColorAndStrokeInputs()
-        }
-    }
-    reader.readAsDataURL(file)
+            onRenderMemeOnCanvas()
+        };
+    };
+    reader.readAsDataURL(file);
 }
 
+
+//consider removing 
 function addDefaultLine() {
     if (gMeme) {
         gMeme.lines = [{ txt: 'Your text here', size: 20, color: 'black', stroke: 'white' }]
-        gMeme.selectedLineIdx = 0 // Select the new line
+        gMeme.selectedLineIdx = 0
     }
 }
 
@@ -96,6 +114,19 @@ function addLine() {
             color: 'black',
             stroke: 'white'
         })
+    }
+}
+
+function deleteLine() {
+    if (!gMeme || !gMeme.lines.length || gMeme.selectedLineIdx == null) {
+        return
+    }
+    gMeme.lines.splice(gMeme.selectedLineIdx, 1)
+
+    if (gMeme.lines.length === 0) {
+        gMeme.selectedLineIdx = null
+    } else if (gMeme.selectedLineIdx >= gMeme.lines.length) {
+        gMeme.selectedLineIdx = gMeme.lines.length - 1
     }
 }
 

@@ -53,6 +53,12 @@ function addMemeOnCanvasEventListeners() {
     if (switchLine) {
         switchLine.addEventListener('click', onSwitchLine, false)
     }
+
+    // Listen to CLICK events on the delete line button
+    const deleteLineBtn = document.querySelector('.line-delete');
+    if (deleteLineBtn) {
+        deleteLineBtn.addEventListener('click', onDeleteLine, false);
+    }
 }
 
 function renderMemes() {
@@ -71,75 +77,65 @@ function renderMemes() {
 
 
 
-/********************/// VIEW FUNCTIONS ///********************/
-function updateColorAndStrokeInputs() {
-    const colorPicker = document.querySelector('.color-picker');
-    const strokePicker = document.querySelector('.stroke-picker');
-    if (gMeme && gMeme.lines && gMeme.selectedLineIdx != null) {
-        colorPicker.value = colorNameToHex(gMeme.lines[gMeme.selectedLineIdx].color);
-        strokePicker.value = colorNameToHex(gMeme.lines[gMeme.selectedLineIdx].stroke);
-    }
-}
-/********************/// VIEW FUNCTIONS ///********************/
+
 
 
 
 /********************/// EVENT HANDLERS ///********************/
 function onRenderMemeOnCanvas() {
-    const elTxtChanger = document.getElementById('meme-text')
-    elTxtChanger.value = getLineTxt()
-    renderMemeOnCanvas()
+    renderMemeOnCanvas();  // Draw the meme on the canvas
+    updateTextInput();     // Update the text input field
+    updateColorAndStrokeInputs(); // Update the color and stroke pickers
+    updateDeleteLineButton();     // Update the state of the delete line button
 }
 
 function onAddLine() {
-    addLine()
-    gMeme.selectedLineIdx = gMeme.lines.length - 1
-    updateTextInput()
-    updateColorAndStrokeInputs()
-    renderMemeOnCanvas()
+    addLine();
+    gMeme.selectedLineIdx = gMeme.lines.length - 1;
+    onRenderMemeOnCanvas();  // Update UI and canvas
 }
 
+function onDeleteLine() {
+    deleteLine();
+    onRenderMemeOnCanvas();  // Update UI and canvas
+}
 
-
-// IM WORKING ON THIS BUT WENT TO FIX THE MVC A LITTLE
 function onSwitchLine(event) {
-    console.log('this is the meme.controller speaking')
-    switchLine()
+    switchLine();
+    onRenderMemeOnCanvas();  // Update UI and canvas
 }
-
-
 
 function onChangeTxt(event) {
-    let newTxt = event.target.value
-    setLineTxt(newTxt)
-    renderMemeOnCanvas()
+    let newTxt = event.target.value;
+    setLineTxt(newTxt);
+    onRenderMemeOnCanvas();  // Update UI and canvas
 }
 
 function onIncrTxtSize() {
-    incrTxtSize()
-    renderMemeOnCanvas()
+    incrTxtSize();
+    onRenderMemeOnCanvas();  // Update UI and canvas
 }
 
 function onDecrTxtSize() {
-    decrTxtSize()
-    renderMemeOnCanvas()
+    decrTxtSize();
+    onRenderMemeOnCanvas();  // Update UI and canvas
 }
 
 function onSetColor(color) {
-    setTxtColor(color)
-    renderMemeOnCanvas()
+    setTxtColor(color);
+    onRenderMemeOnCanvas();  // Update UI and canvas
 }
 
 function onSetStroke(stroke) {
-    setTxtStroke(stroke)
-    renderMemeOnCanvas()
+    setTxtStroke(stroke);
+    onRenderMemeOnCanvas();  // Update UI and canvas
 }
 
 // this function handles user image uploads to use strictly for meme creation
 function onImageUpload(event) {
     const file = event.target.files[0];
-    if (!file.type.startsWith('image/')) return
-    imageUpload(file)
+    if (!file.type.startsWith('image/')) return;
+    imageUpload(file);
 }
 
 function onSaveMeme() {
