@@ -6,8 +6,6 @@ NEW TODO
         - stick the footer to the bottom
         - put the buttons in a grid
         - put the meme beside the  controls
-        - seperate gallery and editor and memes
-        - create about section - gonna be a modal
         - hide the disabled buttons (?)
         - put the incons in the buttons - line up line down
 
@@ -28,8 +26,7 @@ IN PROGRESS
         - stick the footer to the bottom
         - put the buttons in the grid
         - put the meme beside the the controls
-        - seperate gallery and editor and memes
-        - create about section - gonna be a modal
+
         - hide the disabled buttons (?)
         - put the incons in the buttons line up line down
         
@@ -95,3 +92,5 @@ NEW DONE - DUE 04122023 0830 -
 
     - implement delete
     - implement lineUp lineDown (y axis)
+    - seperate gallery and editor and memes
+    - create about section

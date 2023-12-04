@@ -14,8 +14,14 @@ function addMemeOnCanvasEventListeners() {
     const memeTextChanger = document.getElementById('meme-text')
     memeTextChanger.addEventListener('input', onChangeTxt, false)
 
-    const saveBtn = document.querySelector('.saveBtn')
-    saveBtn.addEventListener('click', _saveMeme);
+    // Listen to CLICK events on the save button
+    const saveBtn = document.querySelector('.saveBtn');
+    if (saveBtn) {
+        saveBtn.addEventListener('click', _saveMeme);
+        saveBtn.addEventListener('click', function () {
+            showSection('memes-display');
+        });
+    }
 
 
     //listen to CLICK events on the download button

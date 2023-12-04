@@ -24,13 +24,13 @@ h6 {
 }
 
 h2 {
-    font-size: 1.2em;
+    font-size: 1.5em;
 }
 
 img {
     /* TODO REMOVE THE 50PX WITH WHEN DONE DEBUGGING */
-    /* width: 100%; */
-    width: 50px;
+    width: 10vw
+        /* width: 50px; */
 }
 
 a {

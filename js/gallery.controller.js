@@ -1,16 +1,16 @@
-'use strict'
+'use strict';
 
 function onInitGallery() {
-    renderGallery()
-    addGalleryEventListeners()
+    renderGallery();
+    addGalleryEventListeners();
 }
 
 function renderGallery() {
-    let gallery = getGallery()
+    let gallery = getGallery();
 
-    let strHtml = gallery.map(img => `<img src="${img.url}" class="gallery-image">`)
+    let strHtml = gallery.map(img => `<img src="${img.url}" class="gallery-image">`).join('');
 
-    document.querySelector('.rendered-imgs').innerHTML = strHtml
+    document.querySelector('.rendered-imgs').innerHTML = strHtml;
 }
 
 function onImgClick(event) {
@@ -20,15 +20,14 @@ function onImgClick(event) {
         renderMemeOnCanvas();
         updateTextInput();
         updateColorAndStrokeInputs();
+        window.showSection('editor'); // Use the globally accessible function
     };
 }
 
 function addGalleryEventListeners() {
-    // Listen to CHANGE events on the upload image to gallery
     const imageUploader = document.getElementById('imageUpload');
     imageUploader.addEventListener('change', onImageUpload, false);
 
-    // Listen to CLICK events on the gallery images
     const galleryContainer = document.querySelector('.rendered-imgs');
     galleryContainer.addEventListener('click', function (event) {
         if (event.target.className === 'gallery-image') {
@@ -38,5 +37,5 @@ function addGalleryEventListeners() {
 }
 
 function toggleMenu() {
-    document.body.classList.toggle('menu-open')
+    document.body.classList.toggle('menu-open');
 }

@@ -12,61 +12,80 @@
 
     <div class="main-screen" onclick="toggleMenu()"></div>
     <header class="main-header flex space-between align-center">
-        <div class="logo">
+        <div class="logo" id="logo">
             <h1>TearsGenerator</h1>
         </div>
         <nav class="main-nav">
             <ul class="main-nav-list flex clean-list">
-                <li><a href="#">Memes</a></li>
-                <li><a href="#">Gallery</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="#" class="nav-memes">Memes</a></li>
+                <li><a href="#" class="nav-gallery">Gallery</a></li>
+                <li><a href="#" class="nav-about">About</a></li>
             </ul>
         </nav>
         <button class="btn-toggle-menu" onclick="toggleMenu()">☰</button>
     </header>
 
-    <div class="search-box">
-        <input type="text" name="search-box" id="search-box" placeholder="Search" disabled>
-    </div>
+
 
     <main>
-        <div class="gallery">
+
+
+
+        <div class="gallery section">
+
+            <div class="search-box">
+                <h2>Create your meme!</h2>
+                <input type="text" name="search-box" id="search-box" placeholder="Search" disabled>
+            </div>
+
             <div>
-                <h2>Upload image</h2>
+                <h3>Upload image</h3>
                 <input type="file" id="imageUpload" accept="image/*">
             </div>
 
             <div class="rendered-imgs"></div>
+
         </div>
 
-        <div class="editor">
+
+
+        <div class="editor section">
             <div class="canvas-container">
                 <canvas id="memeCanvas" width="300" height="300"></canvas>
             </div>
 
             <div class="options-container">
+
                 <div class="canvas-manipulation-btns">
-                    <h2>Edit text lines</h2>
-                    <button class="line-switch">Switch line</button>
-                    <button class="line-up">Line-up</button>
-                    <button class="line-down">Line-down</button>
-                    <button class="line-new">New line</button>
-                    <button class="line-delete">Delete line</button>
+                    <h2>Edit meme</h2>
+
+                    <div class="line-controls">
+                        <h3>Line controls</h3>
+                        <input type="text" name="meme-text" id="meme-text" placeholder="Meme text here" value="">
+                        <button class="line-new">New line</button>
+                        <button class="line-delete">Delete line</button>
+                        <button class="line-switch">Switch line</button>
+                    </div>
+
+                    <div class="line-movement">
+                        <h3>Movement</h3>
+                        <button class="line-up">Move line up</button>
+                        <button class="line-down">Move line down</button>
+                    </div>
                 </div>
 
                 <div class="text-editor">
+                    <h3>Text design</h3>
                     <select name="select-font" id="select-font" disabled>Font</select>
-
                     <button class="incr-fs">A+</button>
                     <button class="decr-fs">A-</button>
 
-                    <button class="align-l" disabled>←</button>
-                    <button class="align-c" disabled>←→</button>
-                    <button class="align-r" disabled>→</button>
+                    <button class="align-l" disabled>Align left</button>
+                    <button class="align-c" disabled>Align right</button>
+                    <button class="align-r" disabled>Align center</button>
 
                     <input type="color" name="color" class="color-picker" oninput="onSetColor(this.value)">
                     <input type="color" name="stroke" class="stroke-picker" oninput="onSetStroke(this.value)">
-                    <input type="text" name="meme-text" id="meme-text" placeholder="Meme text here" value="">
 
                     <!-- work on this later -->
                     <!-- <div class="sticker-container">
@@ -77,20 +96,36 @@
                     </div> -->
 
                     <div class="save-download-share">
+                        <h3>Done creating?</h3>
                         <button class="saveBtn">Save</button>
                         <button class="downloadBtn">Download</button>
                         <button class="shareBtn">Share</button>
                     </div>
+
                 </div>
             </div>
         </div>
 
-        <div class="memes-display">
+
+
+        <div class="memes-display section">
             <h2>Memes</h2>
             <div class="memes-container">
                 <!-- Memes will be dynamically inserted here -->
             </div>
         </div>
+
+        <div class="about section">
+            <h2>About This App</h2>
+            <p>I'm Konstantin Nochevny, journeying towards becoming a full-stack developer, and this Meme Generator is a
+                showcase of my skills and dedication. Crafted with vanilla JavaScript during my Coding Academy Bootcamp,
+                it stands as a symbol of the coding challenges I've embraced and overcome.</p>
+            <p>Create a meme, share a laugh! 😁👍</p>
+            <p>Join the many who have already witnessed my problem-solving abilities. Interested in collaborating or
+                learning more? I'm just a message away.</p>
+        </div>
+
+
     </main>
 
     <footer>
@@ -103,6 +138,7 @@
     <script src="js/services/meme.service.js"></script>
     <script src="js/gallery.controller.js"></script>
     <script src="js/meme.controller.js"></script>
+    <script src="js/main.controller.js"></script>
 
 </body>
 
