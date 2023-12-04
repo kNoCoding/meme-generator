@@ -1,19 +1,22 @@
-.rendered-imgs {
+.memes-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     grid-gap: 10px;
     padding: 10px;
 }
 
-.gallery-image {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    object-fit: cover;
+.meme {
     cursor: pointer;
     transition: transform 0.3s ease;
 }
 
-.gallery-image:hover {
+.meme img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.meme:hover {
     transform: scale(1.05);
 }

@@ -94,3 +94,4 @@ NEW DONE - DUE 04122023 0830 -
     - implement lineUp lineDown (y axis)
     - seperate gallery and editor and memes
     - create about section
+    - add a little bit css :)

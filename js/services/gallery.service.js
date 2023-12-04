@@ -34,7 +34,17 @@ function _createGallery() {
 
     gGallery = [
         _createImg(1, ['trump', 'absurd']),
-        _createImg(2, ['puppies', 'cute'])
+        _createImg(2, ['puppies', 'cute']),
+        _createImg(3, ['puppies', 'baby']),
+        _createImg(4, ['cute', 'cat']),
+        _createImg(5, ['baby', 'success']),
+        _createImg(6, ['absurd', 'comedy']),
+        _createImg(7, ['baby', 'surprise']),
+        _createImg(8, ['cynical', 'magical']),
+        _createImg(9, ['divious', 'baby']),
+        _createImg(10, ['obama', 'laugh']),
+        _createImg(11, ['absurd', 'fight']),
+        _createImg(12, ['you', 'pointing']),
     ]
     _saveGalleryToStorage()
 }
